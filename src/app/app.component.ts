@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { places$ } from './data/index';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  public title = 'app';
+  public title: string = 'Weather';
+  public places$: Observable<Place[]> = places$;
+  public currentPlace: Place;
 }

@@ -17,8 +17,13 @@
     <!--<h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>-->
   <!--</li>-->
 <!--</ul>-->
-<h1>Weather</h1>
-<app-place></app-place>
-<app-social></app-social>
-<app-weather></app-weather>
+<h1>{{title}}</h1>
+<div class="element">
+	<app-place [places$]="places$" (mySelect)="currentPlace=$event"></app-place>
+	<div class="element-right">
+		<app-weather></app-weather>
+		<app-social></app-social>
+	</div>
+	{{currentPlace?.phone}}
+</div>
 
