@@ -4,8 +4,7 @@
     "outDir": "../out-tsc/app",
     "baseUrl": "./",
     "module": "es2015",
-    "sourceMap": true,
-    "types": []
+    "sourceMap": true
   },
   "exclude": [
     "test.ts",
