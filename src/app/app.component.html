@@ -21,8 +21,8 @@
 <div class="element">
 	<app-place [places$]="places$" (mySelect)="currentPlace=$event"></app-place>
 	<div class="element-right">
-		<app-weather></app-weather>
-		<app-social></app-social>
+		<app-weather [place]="currentPlace"></app-weather>
+		<app-social [place]="currentPlace"></app-social>
 	</div>
 	{{currentPlace?.phone}}
 </div>

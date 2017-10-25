@@ -1,20 +1,3 @@
-.places-wrapper {
-	width: 30vw;
-	height: 54vh;
-	overflow: hidden;
-	border-radius: 10px;
-	background-color: cornflowerblue;
-}
-.places-image-wrapper {
-	height: 20vmin; /* Высота области */
-	margin: 0; /* Обнуляем отступы */
-	overflow: hidden; /* Прячем всё за пределами */
-	min-width: 600px; /* Минимальная ширина */
-}
-.places-image-wrapper img {
-	width: 100%;
-}
-.places-list{
-	overflow-y: scroll;
-	height: 28vmin;
+.activity-desc h5, .activity-desc p {
+	cursor: pointer;
 }
