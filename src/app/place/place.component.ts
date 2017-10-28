@@ -10,6 +10,7 @@ export class PlaceComponent implements OnInit {
   @Input()
   public places$: Place[];
   public currentImage: string = './assets/images/hotels/lighthouse/1.jpg';
+  public filterQuery: string;
 
   @Output()
   public mySelect: EventEmitter<Place> = new EventEmitter;
@@ -22,5 +23,9 @@ export class PlaceComponent implements OnInit {
     // if (noUndefined(this.places$)) {
     //   this.currentImage = this.places$[0].images.img1;
     // }
+  }
+  // tslint:disable-next-line
+  public setFilterQuery(event: any): void {
+    this.filterQuery = event.target.outerText;
   }
 }

@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { PlaceComponent } from './place/place.component';
 import { SocialComponent } from './social/social.component';
 import { WeatherComponent } from './weather/weather.component';
+import { PlacesFilterPipe } from './common/pipes/places-filter.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     PlaceComponent,
     SocialComponent,
-    WeatherComponent
+    WeatherComponent,
+    PlacesFilterPipe
   ],
   imports: [
     BrowserModule
