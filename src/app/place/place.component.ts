@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PlacesService } from '../common/services/places.service';
+import { Observable } from 'rxjs/Observable';
 
 
 @Component({
@@ -6,19 +8,24 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './place.component.html',
   styleUrls: ['./place.component.css']
 })
-export class PlaceComponent {
-  @Input()
-  public places$: Place[];
-  public currentImage: string = './assets/images/hotels/lighthouse/1.jpg';
+export class PlaceComponent implements OnInit {
+  public places$: Observable<Place[]>;
+  public currentImage: string;
   public filterQuery: string;
 
-  @Output()
-  public mySelect: EventEmitter<Place> = new EventEmitter;
+  public constructor(
+    private _PlacesService: PlacesService
+  ) {}
+
   public search(place: Place): void {
     this.currentImage = place.images.img1;
-    this.mySelect.emit(place);
+    this._PlacesService.currentPlaces = place;
   }
 
+  public ngOnInit(): void {
+    this.places$ = this._PlacesService.getPlaces();
+    this.currentImage = this._PlacesService.currentPlaces.images.img1;
+  }
   // tslint:disable-next-line
   public setFilterQuery(_eventTarget: any): void {
     this.filterQuery = _eventTarget.outerText;

@@ -6,6 +6,7 @@ import { PlaceComponent } from './place/place.component';
 import { SocialComponent } from './social/social.component';
 import { WeatherComponent } from './weather/weather.component';
 import { PlacesFilterPipe } from './common/pipes/places-filter.pipe';
+import { PlacesService } from './common/services/places.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,12 @@ import { PlacesFilterPipe } from './common/pipes/places-filter.pipe';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: PlacesService,
+      useClass: PlacesService
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
