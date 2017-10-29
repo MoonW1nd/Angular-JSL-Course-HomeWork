@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 
 @Component({
@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   templateUrl: './place.component.html',
   styleUrls: ['./place.component.css']
 })
-export class PlaceComponent implements OnInit {
+export class PlaceComponent {
   @Input()
   public places$: Place[];
   public currentImage: string = './assets/images/hotels/lighthouse/1.jpg';
@@ -19,13 +19,14 @@ export class PlaceComponent implements OnInit {
     this.mySelect.emit(place);
   }
 
-  public ngOnInit(): void {
-    // if (noUndefined(this.places$)) {
-    //   this.currentImage = this.places$[0].images.img1;
-    // }
-  }
   // tslint:disable-next-line
-  public setFilterQuery(event: any): void {
-    this.filterQuery = event.target.outerText;
+  public setFilterQuery(_eventTarget: any): void {
+    this.filterQuery = _eventTarget.outerText;
+    const selectPlaces: HTMLCollection = document.getElementsByClassName('places-filter select');
+
+    if (selectPlaces.length !== 0) {
+      selectPlaces[0].classList.remove('select');
+    }
+    _eventTarget.classList.add('select');
   }
 }

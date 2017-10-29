@@ -4,10 +4,11 @@
   </div>
   <div class="element-left-bottom">
     <div class="ele-strip">
-      <ul (click)="setFilterQuery($event)">
-        <li>Hotel</li>
-        <li>Fishing</li>
-        <li>Tours</li>
+      <ul (click)="setFilterQuery($event.target)">
+        <li class="places-filter">Hotel</li>
+        <li class="places-filter">Fishing</li>
+        <li class="places-filter">Tours</li>
+        <li class="places-filter">All</li>
       </ul>
     </div>
     <div class="village">

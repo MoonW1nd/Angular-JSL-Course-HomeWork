@@ -18,8 +18,8 @@
   <!--</li>-->
 <!--</ul>-->
 <h1>{{title}}</h1>
-<div class="element">
-	<div *ngIf="places$ | async; else load">
+<div *ngIf="places$ | async; else load">
+	<div class="element">
 		<app-place [places$]="places$" (mySelect)="currentPlace=$event"></app-place>
 		<div class="element-right">
 			<app-weather [place]="currentPlace"></app-weather>
@@ -29,8 +29,8 @@
 </div>
 
 <ng-template #load>
-	<div>
-		<span>Загрузка...</span>
+	<div class="loader">
+		Загрузка...
 	</div>
 </ng-template>
 

@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class PlacesFilterPipe implements PipeTransform {
 
   public transform(places: Place[], searchQuery?: string): Place[] {
-    if (!searchQuery) {
+    if (!searchQuery || searchQuery === 'All') {
       return places;
     }
 

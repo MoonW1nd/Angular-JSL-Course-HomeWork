@@ -153,4 +153,4 @@ const data: Place[] = [
 ];
 
 export const places$: Observable<Place[]> = Observable.of(data)
-  .delay(1000);
+  .delay(2000);
