@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacesService } from '../common/services/places.service';
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 
 @Component({
@@ -19,12 +20,13 @@ export class PlaceComponent implements OnInit {
 
   public search(place: Place): void {
     this.currentImage = place.images.img1;
-    this._PlacesService.currentPlaces = place;
+    this._PlacesService.currentPlace = place;
+    this._PlacesService.setCurrentPlace(place);
   }
 
   public ngOnInit(): void {
     this.places$ = this._PlacesService.getPlaces();
-    this.currentImage = this._PlacesService.currentPlaces.images.img1;
+    this.currentImage = this._PlacesService.currentPlace.images.img1;
   }
   // tslint:disable-next-line
   public setFilterQuery(_eventTarget: any): void {

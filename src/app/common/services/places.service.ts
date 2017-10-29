@@ -3,6 +3,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/delay';
 import 'rxjs/add/operator/first';
+import { Subject } from 'rxjs/Subject';
 
 const data: Place[] = [
   {
@@ -157,15 +158,19 @@ const data: Place[] = [
 
 @Injectable()
 export class PlacesService {
-  public currentPlaces: Place;
-  public currentPlaces$: Observable<Place>;
+  public currentPlace: Place;
+  public _currentPlaces$$: Subject<Place> = new Subject();
   public setDefaultPlaces(places$: Observable<Place[]>): void {
     places$.first().subscribe(
       (ev: Place[]): void => {
-        this.currentPlaces = ev[0];
+        this.currentPlace = ev[0];
       }
     );
   }
+  public setCurrentPlace(place: Place): void {
+    this._currentPlaces$$.next(place);
+  }
+
   public getPlaces(): Observable<Place[]> {
     return Observable.of(data)
       .delay(2000);

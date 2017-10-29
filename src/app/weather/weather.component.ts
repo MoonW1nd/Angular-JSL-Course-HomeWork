@@ -14,6 +14,11 @@ export class WeatherComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.place = this._PlacesService.currentPlaces;
+    this.place = this._PlacesService.currentPlace;
+    this._PlacesService._currentPlaces$$.subscribe(
+      (place: Place) => {
+        this.place = place;
+      }
+    );
   }
 }
